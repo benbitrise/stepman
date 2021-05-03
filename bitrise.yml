@@ -90,6 +90,10 @@ workflows:
     - OS: "Linux"
     - GOOS: "linux"
 
+  _publish-artifacts:
+    steps:
+    - deploy-to-bitrise-io@1: {}
+
   create-binaries:
     title: Create binaries
     steps:
@@ -107,6 +111,7 @@ workflows:
     - create-arm-darwin-binary
     - create-x86-darwin-binary
     - create-x86-linux-binary
+    - _publish-artifacts
   
   dep-update:
     title: Dep update
